@@ -56,10 +56,10 @@ jobs:
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            cd ~/my-api
+            cd ~/ubuntu-test-backend
             git pull origin main
             npm ci --omit=dev
-            pm2 restart my-api || pm2 start src/index.js --name my-api
+            pm2 restart ubuntu-test-backend || pm2 start src/index.js --name ubuntu-test-backend
             pm2 save
           EOF
 
